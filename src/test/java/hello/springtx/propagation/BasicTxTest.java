@@ -60,4 +60,42 @@ public class BasicTxTest {
         // then
     }
 
+    @DisplayName("")
+    @Test
+    void double_commit() {
+        // given
+        log.info("트랜잭션 1 시작");
+        TransactionStatus tx1 = txManager.getTransaction(new DefaultTransactionAttribute());
+        log.info("트랜잭션 1 커밋");
+        txManager.commit(tx1);
+
+        log.info("트랜잭션 2 시작");
+        TransactionStatus tx2 = txManager.getTransaction(new DefaultTransactionAttribute());
+        log.info("트랜잭션 2 커밋");
+        txManager.commit(tx2);
+
+        // when
+
+        // then
+    }
+
+    @DisplayName("")
+    @Test
+    void double_commit_rollback() {
+        // given
+        log.info("트랜잭션 1 시작");
+        TransactionStatus tx1 = txManager.getTransaction(new DefaultTransactionAttribute());
+        log.info("트랜잭션 1 커밋");
+        txManager.commit(tx1);
+
+        log.info("트랜잭션 2 시작");
+        TransactionStatus tx2 = txManager.getTransaction(new DefaultTransactionAttribute());
+        log.info("트랜잭션 2 롤백");
+        txManager.rollback(tx2);
+
+        // when
+
+        // then
+    }
+
 }
