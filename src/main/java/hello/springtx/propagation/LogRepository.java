@@ -19,7 +19,7 @@ public class LogRepository {
         log.info("log 저장");
         em.persist(logMessage);
 
-        if (logMessage.getMessage().contains("로그 예외")) {
+        if (logMessage.getMessage().contains("로그예외")) {
             log.info("log 저장 시 예외 발생");
             throw new RuntimeException("예외 발생"); // 롤백 됨
         }
